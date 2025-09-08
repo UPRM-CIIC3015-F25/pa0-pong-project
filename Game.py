@@ -12,7 +12,7 @@ def ball_movement():
 
     # Start the ball movement when the game begins
     # TODO Task 5 Create a Merge Conflict
-    speed = 10
+    speed = 7
     if start:
         ball_speed_x = speed * random.choice((1, -1))  # Randomize initial horizontal direction
         ball_speed_y = speed * random.choice((1, -1))  # Randomize initial vertical direction
@@ -25,6 +25,7 @@ def ball_movement():
             score += 1  # Increase player score
             ball_speed_y *= -1  # Reverse ball's vertical direction
             # TODO Task 6: Add sound effects HERE
+            pong_sound.play()
 
     # Ball collision with top boundary
     if ball.top <= 0:
@@ -62,6 +63,8 @@ def restart():
 # General setup
 pygame.mixer.pre_init(44100, -16, 1, 1024)
 pygame.init()
+pygame.mixer.init()
+pong_sound = pygame.mixer.Sound('pong.wav')
 clock = pygame.time.Clock()
 
 # Main Window setup
